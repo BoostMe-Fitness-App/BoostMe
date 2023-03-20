@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "919773382052",
+    "project_id": "boostme-23977",
+    "storage_bucket": "boostme-23977.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919773382052:android:3bd3495e731234956ded31",
+        "android_client_info": {
+          "package_name": "com.example.boostme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919773382052-51vpr8hpl3rvs4n6qjti1u9qp4ff01el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmTiBU54KjhH8oQg7tWRyOJ4SzLBcjR3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919773382052-51vpr8hpl3rvs4n6qjti1u9qp4ff01el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
