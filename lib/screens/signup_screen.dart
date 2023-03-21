@@ -1,8 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:boostme/resources/auth_methods.dart';
 import 'package:boostme/utils/colors.dart';
+import 'package:boostme/utils/utils.dart';
 import 'package:boostme/widgets/text_field_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -16,6 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  Uint8List? _image;
 
   @override
   void dispose() {
@@ -24,6 +29,13 @@ class _SignupScreenState extends State<SignupScreen> {
     _passwordController.dispose();
     _bioController.dispose();
     _usernameController.dispose();
+  }
+
+  selectImage() async {
+    Uint8List im = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = im;
+    });
   }
 
   @override
@@ -48,15 +60,22 @@ class _SignupScreenState extends State<SignupScreen> {
               //circular widget to accept and show the selected files
               Stack(
                 children: [
-                  const CircleAvatar(
-                      radius: 64,
-                      backgroundImage: NetworkImage(
-                          'https://e0.pxfuel.com/wallpapers/803/639/desktop-wallpaper-mochi-cat-mochi-peach.jpg')),
+                  //ternary operator
+                  _image != null
+                      ? CircleAvatar(
+                          radius: 64,
+                          backgroundImage: MemoryImage(_image!),
+                        )
+                      : const CircleAvatar(
+                          radius: 64,
+                          backgroundImage: NetworkImage(
+                              'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'),
+                        ),
                   Positioned(
                       bottom: -10,
                       left: 80,
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: selectImage,
                           icon: const Icon(Icons.add_a_photo)))
                 ],
               ),
