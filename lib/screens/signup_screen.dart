@@ -1,5 +1,7 @@
+import 'package:boostme/resources/auth_methods.dart';
 import 'package:boostme/utils/colors.dart';
 import 'package:boostme/widgets/text_field_input.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -39,7 +41,7 @@ class _SignupScreenState extends State<SignupScreen> {
               Image.asset(
                 'assets/images/logo.png',
                 color: Colors.blueAccent,
-                height: 101,
+                height: 60,
                 width: 101,
               ),
               const SizedBox(height: 10),
@@ -49,7 +51,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   const CircleAvatar(
                       radius: 64,
                       backgroundImage: NetworkImage(
-                          'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png')),
+                          'https://e0.pxfuel.com/wallpapers/803/639/desktop-wallpaper-mochi-cat-mochi-peach.jpg')),
                   Positioned(
                       bottom: -10,
                       left: 80,
@@ -58,28 +60,28 @@ class _SignupScreenState extends State<SignupScreen> {
                           icon: const Icon(Icons.add_a_photo)))
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               //text input field for userName
               TextFieldInput(
                 hintText: 'Enter username',
                 textInputType: TextInputType.text,
                 textEditingController: _usernameController,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 7),
               //text input field for bio
               TextFieldInput(
                 hintText: 'Enter bio',
                 textInputType: TextInputType.text,
                 textEditingController: _bioController,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 10),
               //text input field for email
               TextFieldInput(
                 hintText: 'Enter email',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 10),
               //text input field for password
               TextFieldInput(
                 hintText: 'Enter password',
@@ -87,8 +89,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 textEditingController: _passwordController,
                 isPass: true,
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
               InkWell(
+                onTap: () async {
+                  String res = await AuthMethods().signUpUser(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      username: _usernameController.text,
+                      bio: _bioController.text);
+                  print(res);
+                },
                 child: Container(
                   child: const Text('Sign Up'),
                   width: double.infinity,
@@ -103,14 +113,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       color: blueColor),
                 ),
               ),
-              const SizedBox(height: 12.5),
+              const SizedBox(height: 2),
               Flexible(child: Container(), flex: 2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     child: const Text("Already have an account?"),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 3),
                   ),
                   GestureDetector(
                     onTap: () {},
@@ -119,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         "Login",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 2),
                     ),
                   )
                 ],
