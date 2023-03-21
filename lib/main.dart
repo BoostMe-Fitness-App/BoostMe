@@ -2,6 +2,7 @@ import 'package:boostme/responsive/mobile_screen_layout.dart';
 import 'package:boostme/responsive/responsive_layout_screen.dart';
 import 'package:boostme/responsive/web_screen_layout.dart';
 import 'package:boostme/screens/login_screen.dart';
+import 'package:boostme/screens/signup_screen.dart';
 import 'package:boostme/utils/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       //   mobilecrrenLayout: MobileScreenLayout(),
       //   webScrrenLayout: WebScreenLayout(),
       // ),
-      home: LoginScreen(),
+      home: SignupScreen(),
     );
   }
 }
