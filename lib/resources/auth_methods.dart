@@ -37,10 +37,18 @@ class AuthMethods {
           'uid': cred.user!.uid,
           'email': email,
           'bio': bio,
+          'followers': [],
+          'following': [],
           'photoUrl': photoUrl,
         });
 
         res = 'success';
+      }
+    } on FirebaseAuthException catch (err) {
+      if (err.code == 'invalid-email') {
+        res = 'The email is badly formatted';
+      } else if (err.code == 'weak password ') {
+        res = 'Password should be atleast 6 charactors';
       }
     } catch (err) {
       res = err.toString();
