@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:boostme/resources/storage_method.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:boostme/models/user.dart' as model;
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -31,16 +32,17 @@ class AuthMethods {
         String photoUrl = await StorageMethods()
             .uploadImageToStorage('profilePics', file, false);
 
+//create user model
+        model.User user = model.User(
+            email: email,
+            uid: cred.user!.uid,
+            photoUrl: photoUrl,
+            username: username,
+            bio: bio,
+            followers: [],
+            following: []);
         //add user to database
-        await _firestore.collection('users').doc(cred.user!.uid).set({
-          'userName': username,
-          'uid': cred.user!.uid,
-          'email': email,
-          'bio': bio,
-          'followers': [],
-          'following': [],
-          'photoUrl': photoUrl,
-        });
+        await _firestore.collection('users').doc(cred.user!.uid).set(user.toJson());
 
         res = 'success';
       }
