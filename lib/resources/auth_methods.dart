@@ -8,6 +8,15 @@ class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<model.User> getUserDetails() async {
+    User currentUser = _auth.currentUser!;
+
+    DocumentSnapshot snap =
+        await _firestore.collection('users').doc(currentUser.uid).get();
+
+    return model.User.fromSnap(snap);
+  }
+
   //signup the user
   //Future return type is used because all the calls are made to the Firebase are async
   Future<String> signUpUser({
@@ -34,15 +43,17 @@ class AuthMethods {
 
 //create user model
         model.User user = model.User(
+            username: username,
             email: email,
             uid: cred.user!.uid,
             photoUrl: photoUrl,
-            username: username,
             bio: bio,
             followers: [],
             following: []);
         //add user to database
-        await _firestore.collection('users').doc(cred.user!.uid).set(user.toJson());
+        await _firestore.collection('users').doc(cred.user!.uid).set(
+              user.toJson(),
+            );
 
         res = 'success';
       }
