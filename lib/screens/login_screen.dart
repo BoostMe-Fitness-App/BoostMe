@@ -1,4 +1,9 @@
 import 'package:boostme/resources/auth_methods.dart';
+import 'package:boostme/responsive/mobile_screen_layout.dart';
+import 'package:boostme/responsive/responsive_layout_screen.dart';
+import 'package:boostme/responsive/web_screen_layout.dart';
+import 'package:boostme/screens/signup_screen.dart';
+
 import 'package:boostme/utils/colors.dart';
 import 'package:boostme/utils/utils.dart';
 import 'package:boostme/widgets/text_field_input.dart';
@@ -30,12 +35,26 @@ class _LoginScreenState extends State<LoginScreen> {
     String res = await AuthMethods().loginUser(
         email: _emailController.text, password: _passwordController.text);
     if (res == 'success') {
+      //if login is successed
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const ResponsiveLayout(
+            mobilecrrenLayout: MobileScreenLayout(),
+            webScrrenLayout: WebScreenLayout(),
+          ),
+        ),
+      );
     } else {
       setState(() {
         _isLoading = false;
       });
       showSnackBar(res, context);
     }
+  }
+
+  void navigateToSignUp() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const SignupScreen()));
   }
 
   @override
@@ -103,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: navigateToSignUp,
                     child: Container(
                       child: const Text(
                         "Sign Up",
