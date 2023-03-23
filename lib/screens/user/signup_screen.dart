@@ -4,7 +4,7 @@ import 'package:boostme/resources/auth_methods.dart';
 import 'package:boostme/responsive/mobile_screen_layout.dart';
 import 'package:boostme/responsive/responsive_layout_screen.dart';
 import 'package:boostme/responsive/web_screen_layout.dart';
-import 'package:boostme/screens/login_screen.dart';
+import 'package:boostme/screens/user/login_screen.dart';
 import 'package:boostme/utils/colors.dart';
 import 'package:boostme/utils/utils.dart';
 import 'package:boostme/widgets/text_field_input.dart';

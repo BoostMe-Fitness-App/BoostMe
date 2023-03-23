@@ -1,5 +1,3 @@
-import 'package:boostme/screens/social/add_post.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 const webScreenSize = 600;
@@ -17,7 +15,6 @@ const webScreenSize = 600;
 const homeScreenItems = [
   Text('Feed'),
   Text('Search'),
-  AddPostScreen(),
   Text('Feed'),
   Text('Feed'),
 ];

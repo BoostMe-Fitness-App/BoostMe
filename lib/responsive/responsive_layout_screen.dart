@@ -24,15 +24,16 @@ class _ResponsiveLayoutState extends State<ResponsiveLayout> {
   }
 
   addData() async {
-    UserProvider _userProvider = Provider.of(context, listen: false);
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
     await _userProvider.refreshUser();
   }
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constaints) {
-        if (constaints.maxWidth > webScreenSize) {
+      builder: (context, constraints) {
+        if (constraints.maxWidth > webScreenSize) {
           return widget.webScrrenLayout;
         }
         return widget.mobilecrrenLayout;
