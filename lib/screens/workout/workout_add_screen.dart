@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, duplicate_ignore
+
 import 'dart:typed_data';
 import 'package:boostme/providers/user_provider.dart';
 import 'package:boostme/resources/firestore_methods.dart';
@@ -8,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import 'workout _home_screen.dart';
 
 class WorkoutAddScreen extends StatefulWidget {
   const WorkoutAddScreen({Key? key}) : super(key: key);
@@ -29,19 +33,16 @@ class _WorkoutAddScreenState extends State<WorkoutAddScreen> {
       // upload to storage and db
       String res = await FirestoreMethods().addExercise(uid, _exName.text,
           _exWeight.text, _exSets.text, _exReps.text, _exDate.text);
+      // Navigate to workout home scrren
+      Navigator.pop(context);
+
       if (res == "success") {
-        // showSnackBar(
-        //   context as String,
-        //   'Posted!' as BuildContext,
-        // );
+        //
       } else {
-        // showSnackBar(context as String, res as BuildContext);
+        //
       }
     } catch (err) {
-      // showSnackBar(
-      //   context as String,
-      //   err.toString() as BuildContext,
-      // );
+      //
     }
   }
 
@@ -65,32 +66,12 @@ class _WorkoutAddScreenState extends State<WorkoutAddScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (context) => const MobileScreenLayout(),
-            //   ),
-            // );
             Navigator.pop(context);
           },
         ),
         title: const Text(
-          'Add Exercise',
+          'Add a New Exercise',
         ),
-        centerTitle: false,
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => saveExercise(
-              userProvider.getUser!.uid,
-            ),
-            child: const Text(
-              "Save",
-              style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0),
-            ),
-          )
-        ],
       ),
       // POST FORM
       body: SingleChildScrollView(
@@ -170,7 +151,9 @@ class _WorkoutAddScreenState extends State<WorkoutAddScreen> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => saveExercise(
+                    userProvider.getUser!.uid,
+                  ),
                   style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all(
                       const Size(double.infinity, 50),

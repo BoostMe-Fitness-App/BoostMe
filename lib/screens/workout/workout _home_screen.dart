@@ -1,5 +1,5 @@
 // ignore_for_file: file_names
-
+import 'package:boostme/screens/workout/workout_add_screen.dart';
 import 'package:boostme/utils/colors.dart';
 import 'package:boostme/widgets/post_card.dart';
 import 'package:boostme/widgets/workout_list.dart';
@@ -27,6 +27,19 @@ class WorkoutHome extends StatelessWidget {
               onPressed: () {}, icon: const Icon(Icons.messenger_outline_sharp))
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const WorkoutAddScreen()));
+        },
+        backgroundColor: Colors.cyan,
+        child: const Icon(
+          Icons.add,
+          size: 40.0,
+          color: Colors.white,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('workout').snapshots(),
         builder: (context,

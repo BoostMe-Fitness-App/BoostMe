@@ -23,75 +23,41 @@ class _WorkoutListState extends State<WorkoutList> {
     return Container(
       color: mobileBackgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Divider(
-            height: 1,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              const Text(
-                "Exercise Name : ",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.snap['exName']}",
-                style: const TextStyle(fontSize: 20.0),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              const Text(
-                "Total Weight : ",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.snap['exWeight']}Kg",
-                style: const TextStyle(fontSize: 20.0),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              const Text(
-                "Sets Count : ",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.snap['exSets']}",
-                style: const TextStyle(fontSize: 20.0),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              // ignore: prefer_const_constructors
-              Text(
-                "Reps Count : ",
-                style: const TextStyle(
-                    fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.snap['exReps']}",
-                style: const TextStyle(fontSize: 20.0),
-              ),
-            ],
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              widget.snap['exDate'],
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              widget.snap['exName'],
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+            ),
+            Row(
+              children: [
+                Chip(
+                  label: Text("${widget.snap['exWeight']}kg"),
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Chip(
+                  label: Text("${widget.snap['exSets']}sets"),
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Chip(
+                  label: Text("${widget.snap['exReps']}reps"),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
