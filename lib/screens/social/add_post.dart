@@ -136,7 +136,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 TextButton(
                   onPressed: () => postImage(
                     userProvider.getUser!.uid,
-                    userProvider.getUser!.username ?? "null",
+                    userProvider.getUser!.username ?? "",
                     userProvider.getUser!.photoUrl,
                   ),
                   child: const Text(
