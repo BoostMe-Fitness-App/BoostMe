@@ -2,6 +2,7 @@
 
 import 'package:boostme/utils/colors.dart';
 import 'package:boostme/widgets/post_card.dart';
+import 'package:boostme/widgets/workout_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class WorkoutHome extends StatelessWidget {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('posts').snapshots(),
+        stream: FirebaseFirestore.instance.collection('workout').snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -37,7 +38,7 @@ class WorkoutHome extends StatelessWidget {
           }
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) => PostCard(
+            itemBuilder: (context, index) => WorkoutList(
               snap: snapshot.data!.docs[index].data(),
             ),
           );
