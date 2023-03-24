@@ -1,7 +1,7 @@
 import 'package:boostme/screens/social/add_post.dart';
 import 'package:boostme/screens/social/feed_screen.dart';
-import 'package:boostme/screens/workout/workout_welcome.dart';
 import 'package:flutter/material.dart';
+import '../screens/workout/workout _home_screen.dart';
 
 const webScreenSize = 600;
 
@@ -18,7 +18,7 @@ const webScreenSize = 600;
 const homeScreenItems = [
   FeedScreen(),
   AddPostScreen(),
-  WorkoutWelcomeScreen(),
+  WorkoutHome(),
   Text('Nutrition'),
   Text('Yoga'),
   Text('Profile'),
