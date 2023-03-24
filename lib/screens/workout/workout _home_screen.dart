@@ -22,10 +22,6 @@ class WorkoutHome extends StatelessWidget {
           height: 100,
           width: 101,
         ),
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.messenger_outline_sharp))
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
