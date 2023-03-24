@@ -6,7 +6,6 @@ class Workout {
   final String exWeight;
   final String exReps;
   final String exSets;
-
   final String exDate;
 
   const Workout({
