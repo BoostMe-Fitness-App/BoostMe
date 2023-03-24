@@ -3,7 +3,7 @@ import 'package:boostme/models/user.dart';
 import 'package:boostme/resources/auth_methods.dart';
 
 class UserProvider with ChangeNotifier {
-  User? _user;
+  User ?_user;
 
   final AuthMethods _authMethods = AuthMethods();
 

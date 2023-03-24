@@ -84,7 +84,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
+              Icons.add_circle_outlined,
               color: _page == 1 ? primaryColor : secondaryColor,
             ),
             label: '',
@@ -92,7 +92,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.add_circle,
+              Icons.fitness_center_outlined,
               color: _page == 2 ? primaryColor : secondaryColor,
             ),
             label: '',
@@ -100,7 +100,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
+              Icons.food_bank_rounded,
               color: _page == 3 ? primaryColor : secondaryColor,
             ),
             label: '',
@@ -108,7 +108,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.mosque,
               color: _page == 4 ? primaryColor : secondaryColor,
             ),
             label: '',
@@ -116,7 +116,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.person_2,
               color: _page == 5 ? primaryColor : secondaryColor,
             ),
             label: '',

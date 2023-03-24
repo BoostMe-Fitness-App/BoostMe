@@ -6,7 +6,7 @@ class WorkoutWelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text('Welcome to workout'),
+      body: Center(child: Text('Welcome to workout')),
     );
   }
 }

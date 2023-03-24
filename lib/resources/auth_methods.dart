@@ -9,7 +9,7 @@ class AuthMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<model.User?> getUserDetails() async {
-    User currentUser = _auth.currentUser!;
+    User? currentUser = _auth.currentUser!;
 
     DocumentSnapshot documentSnapshot =
         await _firestore.collection('users').doc(currentUser.uid).get();
@@ -22,7 +22,7 @@ class AuthMethods {
   Future<String> signUpUser({
     required String email,
     required String password,
-    required String username,
+     String ?username,
     required String bio,
     required Uint8List file, //Uint8List is the file type
   }) async {
@@ -30,7 +30,7 @@ class AuthMethods {
     try {
       if (email.isNotEmpty ||
           password.isNotEmpty ||
-          username.isNotEmpty ||
+          username!.isNotEmpty ||
           bio.isNotEmpty ||
           file != null) {
         // register user

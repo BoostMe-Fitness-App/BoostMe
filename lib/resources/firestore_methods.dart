@@ -13,7 +13,7 @@ class FirestoreMethods {
     String description,
     Uint8List file,
     String uid,
-    String username,
+    String? username,
     String profImage,
   ) async {
     String res = 'Some error occured';
@@ -25,7 +25,7 @@ class FirestoreMethods {
       Post post = Post(
         description: description,
         uid: uid,
-        username: username,
+        username: username!,
         postId: postId,
         datePublished: DateTime.now(),
         postUrl: photoUrl,
