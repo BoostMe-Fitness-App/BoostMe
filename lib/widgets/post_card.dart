@@ -2,6 +2,7 @@ import 'package:boostme/models/user.dart' as model;
 import 'package:boostme/models/user.dart';
 import 'package:boostme/providers/user_provider.dart';
 import 'package:boostme/resources/firestore_methods.dart';
+import 'package:boostme/screens/social/comment_screen.dart';
 import 'package:boostme/utils/colors.dart';
 import 'package:boostme/widgets/like_animation.dart';
 import 'package:flutter/cupertino.dart';
@@ -154,7 +155,11 @@ class _PostCardState extends State<PostCard> {
                         : const Icon(Icons.favorite_border_rounded)),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CommentScreen(),
+                  ),
+                ),
                 icon: const Icon(
                   Icons.comment,
                   color: Colors.white,
